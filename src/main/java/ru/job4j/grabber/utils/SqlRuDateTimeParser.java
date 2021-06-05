@@ -20,6 +20,8 @@ public class SqlRuDateTimeParser implements DateTimeParser {
         }
         if (parse.contains("май")) {
             parse = parse.substring(0, 3) + "мая" + parse.substring(6);
+        } else if (parse.contains("фев")) {
+            parse = parse.substring(0, 6) + "р." + parse.substring(6);
         } else if (!parse.contains(".")) {
             parse = parse.substring(0, 6) + ". " + parse.substring(7);
         }
