@@ -7,6 +7,7 @@ public class Post {
     private String name;
     private String text;
     private String link;
+    private LocalDateTime created;
 
     public int getId() {
         return id;
@@ -47,6 +48,4 @@ public class Post {
     public void setCreated(LocalDateTime created) {
         this.created = created;
     }
-
-    private LocalDateTime created;
 }
