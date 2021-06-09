@@ -15,9 +15,12 @@ public class PostDetailsLoader {
             Document doc = Jsoup.connect(url).get();
             String text = doc.select(".msgBody").get(1).text();
             String footer = doc.select(".msgFooter").get(0).text();
+            String name = doc.select(".messageHeader").get(0).text().split(" \\[")[0];
             int index = footer.indexOf(":");
             SqlRuDateTimeParser sqlRuDateTimeParser = new SqlRuDateTimeParser();
             LocalDateTime created = sqlRuDateTimeParser.parse(footer.substring(0, index + 3));
+            post.setLink(url);
+            post.setName(name);
             post.setText(text);
             post.setCreated(created);
         } catch (IOException e) {
@@ -27,7 +30,8 @@ public class PostDetailsLoader {
     }
 
     public static void main(String[] args) {
-        Post post = load("https://www.sql.ru/forum/1336341/java-razrabotchik-v-finteh-kompaniu");
+        Post post = load("https://www.sql.ru/forum/1336532/android-developer-udalenka");
+        System.out.println(post.getName());
         System.out.println(post.getText());
         System.out.println(post.getCreated());
     }

@@ -23,4 +23,10 @@ public class PostDetailsLoaderTest {
         LocalDateTime rsl = sqlRuDateTimeParser.parse("25 май 21, 15:10");
         assertThat(post.getCreated(), is(rsl));
     }
+
+    @Test
+    public void getNameTest() {
+        Post post = PostDetailsLoader.load("https://www.sql.ru/forum/1336341/java-razrabotchik-v-finteh-kompaniu");
+        assertThat(post.getName(), is("Java разработчик в финтех компанию"));
+    }
 }

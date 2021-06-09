@@ -9,6 +9,14 @@ public class Post {
     private String link;
     private LocalDateTime created;
 
+    public Post() {
+    }
+
+    public Post(String link, String name) {
+        this.link = link;
+        this.name = name;
+    }
+
     public int getId() {
         return id;
     }
