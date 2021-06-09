@@ -1,6 +1,7 @@
 package ru.job4j.grabber.utils;
 
 import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
 import ru.job4j.grabber.Post;
 
 import java.io.IOException;
@@ -11,8 +12,9 @@ public class PostDetailsLoader {
     public static Post load(String url) {
         Post post = new Post();
         try {
-            String text = Jsoup.connect(url).get().select(".msgBody").get(1).text();
-            String footer = Jsoup.connect(url).get().select(".msgFooter").get(0).text();
+            Document doc = Jsoup.connect(url).get();
+            String text = doc.select(".msgBody").get(1).text();
+            String footer = doc.select(".msgFooter").get(0).text();
             int index = footer.indexOf(":");
             SqlRuDateTimeParser sqlRuDateTimeParser = new SqlRuDateTimeParser();
             LocalDateTime created = sqlRuDateTimeParser.parse(footer.substring(0, index + 3));
