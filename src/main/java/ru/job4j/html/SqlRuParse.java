@@ -23,7 +23,7 @@ public class SqlRuParse implements Parse {
             Elements row = doc.select(".postslisttopic");
             for (Element td : row) {
                 Element href = td.child(0);
-                list.add(new Post(href.attr("href"), href.text()));
+                list.add(detail(href.attr("href")));
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -12,11 +12,6 @@ public class Post {
     public Post() {
     }
 
-    public Post(String link, String name) {
-        this.link = link;
-        this.name = name;
-    }
-
     public Post(String name, String text, String link, LocalDateTime created) {
         this.name = name;
         this.text = text;
